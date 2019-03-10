@@ -7,8 +7,9 @@ namespace web_back_realtime_communication.ws
 {
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+        // https://gunnarpeipman.com/aspnet/aspnet-core-websocket-chat/
+        // https://radu-matei.com/blog/aspnet-core-websockets-middleware/
+
         public void ConfigureServices(IServiceCollection services)
         {
         }
@@ -19,13 +20,13 @@ namespace web_back_realtime_communication.ws
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
             }
 
             app.UseStaticFiles();
             app.UseWebSockets();
 
             app.UseWebsocketEchoMiddleware();
-           
         }
     }
 }
