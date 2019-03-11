@@ -12,6 +12,7 @@ namespace web_back_realtime_communication.ws
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -27,6 +28,11 @@ namespace web_back_realtime_communication.ws
             app.UseWebSockets();
 
             app.UseWebsocketEchoMiddleware();
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
+            });
         }
     }
 }
